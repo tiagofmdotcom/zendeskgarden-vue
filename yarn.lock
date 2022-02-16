@@ -3196,6 +3196,54 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
+"@zendeskgarden/css-avatars@^6.0.11":
+  version "6.0.11"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-avatars/-/css-avatars-6.0.11.tgz#90d8906dc33965f8a9db298462f6e39780560261"
+  integrity sha512-qdbWnrn3pk25Yr3dBY/he2S2blMH8vDzjfKw3h7kWYNmP325Diq8FSARgYbd4bni9UEcuPZtKPUJuPDvjZc4bw==
+  dependencies:
+    "@zendeskgarden/css-variables" "^6.4.5"
+
+"@zendeskgarden/css-bedrock@^9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-bedrock/-/css-bedrock-9.0.0.tgz#7bc9e54b0d847e18f4e33e08a5a9961cdad360f6"
+  integrity sha512-dHwlDJ5v4ijX3yCr4Z97UGaRYFrD3AeWv+HmFcr4QQRlOE4prkIvahXxR6eD4QhxwEs91FtWpJxvCsZAJGHuRA==
+  dependencies:
+    "@zendeskgarden/css-variables" "^6.4.5"
+    modern-normalize "^1.0.0"
+
+"@zendeskgarden/css-buttons@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-buttons/-/css-buttons-8.0.1.tgz#ffeda198323bb79c2caf86fcf619da7c43d57857"
+  integrity sha512-IV32iWZ6TknYfRuZ8bH+i5OAicf220nXkytWWw4niHbk5aB4dAv2e2lfQaEBPdRIVLVaMwdksLLgD7/HWwMhlw==
+  dependencies:
+    "@zendeskgarden/css-variables" "^6.4.5"
+
+"@zendeskgarden/css-callouts@^3.3.18":
+  version "3.3.18"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-callouts/-/css-callouts-3.3.18.tgz#aa2cf6002875f429ef0e0a258f68d2a41300396c"
+  integrity sha512-MnMkJRjUXAdjcDdMaGdVsVwp0gIYKrunj28Adcr9jlYzaPGQ9OFhFl9T/3/poXkeItxRyGhXYraAnnWpP3L3hA==
+  dependencies:
+    "@zendeskgarden/css-variables" "^6.4.5"
+
+"@zendeskgarden/css-forms@^7.0.21":
+  version "7.0.21"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-forms/-/css-forms-7.0.21.tgz#35066791bb1cccc02beeb1a71eb58a1b10fe34ce"
+  integrity sha512-pPEMwEHyDQ2LQjx/2qmsVupbCZ+ynXmKNtl9WeIJrArVUCa4ISPPTS3Kwg/MZkWk6Ano/CWkeuWLP5huyxmvtA==
+  dependencies:
+    "@zendeskgarden/css-variables" "^6.4.5"
+
+"@zendeskgarden/css-tags@^5.1.16":
+  version "5.1.16"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-tags/-/css-tags-5.1.16.tgz#266cf489fe98a47d19c1d7282d5d15acc3fc6f0b"
+  integrity sha512-bKoAyH5CVd/Omwmkuh9ylSYPrwggxrVVhkAy//WCLYXZQlVXiDg4hM1hqnuK+WRJrv748Jh4svQit3WUpR6khA==
+  dependencies:
+    "@zendeskgarden/css-variables" "^6.4.5"
+
+"@zendeskgarden/css-variables@^6.4.5":
+  version "6.4.5"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.4.5.tgz#b51a50046f42a11b8d1bfec46e100b02fd6fc1d9"
+  integrity sha512-vX7vDJVQoyYFUshYXXX5QE2fL9M6K2bnxTeB2IVyEIaGRYEi20xjoY6cuO1uAQ7RaIRGCSyZFKgWW+/IrlQMKg==
+
 accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
   version "1.3.8"
   resolved "https://registry.yarnpkg.com/accepts/-/accepts-1.3.8.tgz#0bf0be125b67014adcb0b0921e62db7bffe16b2e"
@@ -8948,6 +8996,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
+
+modern-normalize@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/modern-normalize/-/modern-normalize-1.1.0.tgz#da8e80140d9221426bd4f725c6e11283d34f90b7"
+  integrity sha512-2lMlY1Yc1+CUy0gw4H95uNN7vjbpoED7NNRSBHE25nWfLBdmMzFCsPshlzbxHz+gYMcBEUN8V4pU16prcdPSgA==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
