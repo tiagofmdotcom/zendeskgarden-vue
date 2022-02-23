@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import {Button, Anchor, ToggleButton, IconButton, ChevronButton} from '@stories/Buttons';
+import {Button, Anchor, ToggleButton, IconButton, ChevronButton, ToggleIconButton} from '@stories/Buttons';
 
 export default {
     title: 'Packages/Buttons',
@@ -15,7 +15,12 @@ export default {
         label: {
             control: 'text',
             description: 'Slot content',
-        }
+        },
+
+        isPressed: {
+            options: [false, true, 'mixed'],
+            control: { type: 'radio' }
+        },        
     }
 } as Meta;
 
@@ -26,6 +31,7 @@ const ButtonComponent: Story = (args) => defineComponent({
     template: '<Button v-bind="args" v-slot="label"></Button>'
 });
 export const ButtonStory = ButtonComponent.bind({});
+ButtonStory.parameters = { controls: { exclude: ['isPressed'] } };
 ButtonStory.storyName = 'Button';
 ButtonStory.args = {
     label: 'Button',
@@ -46,7 +52,7 @@ const AnchorComponent: Story = (args) => defineComponent({
     template: '<Anchor v-bind="args" v-slot="label"></Anchor>'
 });
 export const AnchorStory = AnchorComponent.bind({});
-AnchorStory.parameters = { controls: { exclude: ['size', 'onClick'] } };
+AnchorStory.parameters = { controls: { exclude: ['isPressed'] } };
 AnchorStory.storyName = 'Anchor';
 AnchorStory.args = {
     label: 'Anchor',
@@ -86,7 +92,7 @@ const IconButtonComponent: Story = (args) => defineComponent({
     template: `<IconButton v-bind="args"/>`
 });
 export const IconButtonStory = IconButtonComponent.bind({});
-IconButtonStory.parameters = { controls: { exclude: ['iconSvg', 'label'] } };
+IconButtonStory.parameters = { controls: { exclude: ['iconSvg', 'label', 'isPressed'] } };
 IconButtonStory.storyName = 'IconButton';
 IconButtonStory.args = {
     disabled: false,
@@ -106,7 +112,7 @@ const ChevronButtonComponent: Story = (args) => defineComponent({
     template: `<ChevronButton v-bind="args"/>`
 });
 export const ChevronButtonStory = ChevronButtonComponent.bind({});
-ChevronButtonStory.parameters = { controls: { exclude: ['label'] } };
+ChevronButtonStory.parameters = { controls: { exclude: ['label', 'isPressed'] } };
 ChevronButtonStory.storyName = 'ChevronButton';
 ChevronButtonStory.args = {
     disabled: false,
@@ -116,4 +122,27 @@ ChevronButtonStory.args = {
     isBasic: false,
     isRotated: false,
     size: 'md',
+};
+
+// ToggleIconButton
+//FIX-ME : Sync "isPressed" attribute with inner vue component state (check: https://storybook.js.org/addons/storybook-addon-knobs-color-options | https://github.com/storybookjs/storybook/issues/3855#issuecomment-624164453 )
+import star from '@zendeskgarden/svg-icons/src/16/star-stroke.svg';
+import starPress from '@zendeskgarden/svg-icons/src/16/star-fill.svg';
+const ToggleIconButtonComponent: Story = (args) => defineComponent({
+    components: { ToggleIconButton },
+    setup: () => ({ args, star, starPress }),
+    template: `<ToggleIconButton v-bind="args"><template #default>{{star}}</template><template #pressed>{{starPress}}</template></ToggleIconButton>`
+});
+export const ToggleIconButtonStory = ToggleIconButtonComponent.bind({});
+ToggleIconButtonStory.parameters = { controls: { exclude: ['iconSvg', 'label'] } };
+ToggleIconButtonStory.storyName = 'ToggleIconButton';
+ToggleIconButtonStory.args = {
+    disabled: false,
+    isPrimary: false,
+    isDanger: false,
+    isPill: true,
+    isBasic: true,
+    isRotated: false,
+    size: 'md',
+    isPressed: false,
 };

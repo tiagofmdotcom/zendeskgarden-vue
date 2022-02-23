@@ -1,33 +1,25 @@
 <template>
-    <ButtonBase 
-        elementTag="button"
+    <IconButton
         @click="onClick"
         :disabled="disabled"      
         :isPrimary="isPrimary"
         :isDanger="isDanger"
         :isPill="isPill"
         :isBasic="isBasic"
-        :isActive="isPressed"
         :hasIcon="true"
+        :isRotated="isRotated"
+        :isActive="pressedState"
         :size="size"
+        :iconSvg="icon"
     >
-        <inline-svg 
-            :class="classes"
-            :src="icon" 
-            width="16" 
-            height="16"
-            fill="black"
-            aria-label="My image"
-        ></inline-svg>
-    </ButtonBase>
+    </IconButton>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed } from 'vue';
-import ButtonBase from './ButtonBase.vue';
-import InlineSvg from 'vue-inline-svg';
+import { defineComponent, reactive, ref, computed } from 'vue';
+import IconButton from './IconButton.vue';
 
 export default defineComponent({
-    components: { ButtonBase, InlineSvg },
+    components: { IconButton },
     props: {
         isPrimary: {
             type: Boolean,
@@ -37,15 +29,21 @@ export default defineComponent({
         },
         isPill: {
             type: Boolean,
+            default: true
         },
         isBasic: {
             type: Boolean,
+            default: true
         },
         isRotated: {
             type: Boolean
         },
         isPressed: {
-            type: Boolean
+            type: [String, Boolean],
+            validator: (value: string | boolean): boolean => {
+                return [true, false, 'mixed'].indexOf(value) !== -1;
+            },
+            default: 'mixed',
         },        
         disabled: {
             type: Boolean,
@@ -59,7 +57,7 @@ export default defineComponent({
         },
         iconSvg: {
             type: String
-        }
+        }        
     },
 
     emits: ['click'],
@@ -74,17 +72,21 @@ export default defineComponent({
         else if (node.children.default) return getSlotChildrenText(node.children.default())
         }).join('')
 
+        const pressedState = ref(props.isPressed);
         return {
+            pressedState,
             onClick() {
-                emit('click');
+                pressedState.value = !pressedState.value;
+                emit('click', {isPressed: pressedState.value});
             },
-
-            classes: computed(() => ({
-                'c-btn__icon': true,
-                'is-rotated': props.isRotated, // FIXME: transition is not being performed (component is fully rerendering) | see: https://github.com/storybookjs/storybook/issues/15345
-            })),
+            icon: computed(() => {
+                if ([false, 'mixed'].includes(pressedState.value)) {
+                    return slots.default && getSlotChildrenText(slots.default()) ||'';
+                } else {
+                    return slots.pressed && getSlotChildrenText(slots.pressed()) ||'';
+                }
+            })
             
-            icon: computed(() => slots.default && getSlotChildrenText(slots.default()) || props.iconSvg || '')
         };
     },
 });
