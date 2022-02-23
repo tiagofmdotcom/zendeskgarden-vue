@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import {Button, Anchor, ToggleButton, IconButton} from '@stories/Buttons';
+import {Button, Anchor, ToggleButton, IconButton, ChevronButton} from '@stories/Buttons';
 
 export default {
     title: 'Packages/Buttons',
@@ -97,4 +97,23 @@ IconButtonStory.args = {
     isRotated: false,
     size: 'md',
     iconSvg: smiley
+};
+
+// ChevronButton
+const ChevronButtonComponent: Story = (args) => defineComponent({
+    components: { ChevronButton },
+    setup: () => ({ args }),
+    template: `<ChevronButton v-bind="args"/>`
+});
+export const ChevronButtonStory = ChevronButtonComponent.bind({});
+ChevronButtonStory.parameters = { controls: { exclude: ['label'] } };
+ChevronButtonStory.storyName = 'ChevronButton';
+ChevronButtonStory.args = {
+    disabled: false,
+    isPrimary: false,
+    isDanger: false,
+    isPill: false,
+    isBasic: false,
+    isRotated: false,
+    size: 'md',
 };
