@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/vue3';
 import { defineComponent } from 'vue';
 
-import {Button, Anchor, ToggleButton, IconButton, ChevronButton, ToggleIconButton} from '@stories/Buttons';
+import {Button, Anchor, ToggleButton, IconButton, ChevronButton, ToggleIconButton, ButtonGroup} from '@stories/Buttons';
 
 export default {
     title: 'Packages/Buttons',
@@ -145,4 +145,25 @@ ToggleIconButtonStory.args = {
     isRotated: false,
     size: 'md',
     isPressed: false,
+};
+
+// ButtonGroup
+//FIX-ME : Sync "isPressed" attribute with inner vue component state (check: https://storybook.js.org/addons/storybook-addon-knobs-color-options | https://github.com/storybookjs/storybook/issues/3855#issuecomment-624164453 )
+//XXX This is a legacy component and may be deprecated in the future. Garden does not presently recommend the use of Button groups. | SEE: https://garden.zendesk.com/components/button-group
+const ButtonGroupComponent: Story = (args) => defineComponent({
+    components: { ButtonGroup, ToggleButton },
+    setup: () => ({ args }),
+    template: `
+    <ButtonGroup v-bind="args">
+        <ToggleButton :isPressed="true" :isBasic="true" :isPrimary="true">A</ToggleButton>
+        <ToggleButton :isBasic="true" :isPrimary="true">B</ToggleButton>
+        <ToggleButton :isBasic="true" :isPrimary="true">C</ToggleButton>
+    </ButtonGroup>
+    `
+});
+export const ButtonGroupStory = ButtonGroupComponent.bind({});
+ButtonGroupStory.parameters = { controls: { exclude: ['iconSvg', 'label', 'isPressed', 'size', 'onClick'] } };
+ButtonGroupStory.storyName = 'ButtonGroup';
+ButtonGroupStory.args = {
+
 };
