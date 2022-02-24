@@ -2,6 +2,8 @@
 
 Vue 3 Components based on Garden CSS Components
 
+Preview: [https://tiagofmdotcom.github.io/zendeskgarden-vue/](https://tiagofmdotcom.github.io/zendeskgarden-vue/)
+
 ## Project setup
 ```
 yarn install
