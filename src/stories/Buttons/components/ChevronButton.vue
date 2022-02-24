@@ -14,7 +14,7 @@
     </IconButton>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed } from 'vue';
+import { defineComponent, reactive } from 'vue';
 import IconButton from './IconButton.vue';
 import chevronDownIcon from '@zendeskgarden/svg-icons/src/16/chevron-down-stroke.svg';
 
@@ -50,13 +50,15 @@ export default defineComponent({
 
     emits: ['click'],
 
-    setup(props, { emit, slots }) {
+    setup(props, { emit }) {
         props = reactive(props);
 
         // HACK: gets default slot text content : https://stackoverflow.com/a/64167032/1869192
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const getSlotChildrenText = (children: any) => children.map((node: any) => {
         if (!node.children || typeof node.children === 'string') return node.children || ''
         else if (Array.isArray(node.children)) return getSlotChildrenText(node.children)
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         else if (node.children.default) return getSlotChildrenText(node.children.default())
         }).join('')
 
